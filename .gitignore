@@ -1,0 +1,10 @@
+# Videos (too large for git)
+Videos rece/
+videos rece/
+*.MOV
+*.mov
+*.mp4
+
+# OS files
+.DS_Store
+Thumbs.db
