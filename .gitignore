@@ -1,10 +1,9 @@
-# Videos (too large for git)
-Videos rece/
-videos rece/
-*.MOV
-*.mov
-*.mp4
+# Videos/audio input (always local on Mac)
+Videos/
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# Temp
+/tmp/
