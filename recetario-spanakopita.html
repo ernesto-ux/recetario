@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanakopita — Recetario Ernesto Otero</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #f5f0eb; color: #2d2d2d; line-height: 1.6; }
+  .wrapper { max-width: 640px; margin: 0 auto; background: #fff; min-height: 100vh; }
+
+  /* HEADER */
+  .header { background: #8B0000; padding: 32px 40px 24px; text-align: center; }
+  .header-brand { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+  .header-title { font-family: 'Playfair Display', Georgia, serif; font-size: 38px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .header-subtitle { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 14px; color: rgba(255,255,255,0.75); }
+
+  /* RECIPE TITLE BLOCK */
+  .recipe-header { padding: 32px 40px 20px; border-bottom: 1px solid #eee; }
+  .recipe-tag { display: inline-block; background: #A31515; color: #fff; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; margin-bottom: 12px; }
+  .recipe-title { font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 700; color: #2d2d2d; line-height: 1.2; }
+  .recipe-audio-note { margin-top: 10px; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #999; font-style: italic; }
+
+  /* INFO BAR */
+  .info-bar { display: flex; justify-content: center; gap: 32px; padding: 14px 40px; background: #fdf0f0; border-bottom: 1px solid #e8b5b5; }
+  .info-item { text-align: center; }
+  .info-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #A31515; font-weight: 600; }
+  .info-value { font-size: 14px; font-weight: 500; color: #2d2d2d; margin-top: 1px; }
+
+  /* INTRO */
+  .r-intro { padding: 24px 40px; border-bottom: 1px solid #eee; }
+  .r-intro p { font-size: 14px; color: #555; line-height: 1.7; font-style: italic; }
+
+  /* SECTIONS */
+  .section { padding: 24px 40px; }
+  .section + .section { border-top: 1px solid #f0f0f0; }
+  .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 700; color: #8B0000; margin-bottom: 14px; padding-bottom: 6px; border-bottom: 2px solid #A31515; display: inline-block; }
+
+  /* INGREDIENTS */
+  .ingredients-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+  .ingredient { font-size: 13px; padding: 5px 0; border-bottom: 1px dotted #ddd; display: flex; align-items: center; gap: 7px; }
+  .ingredient .dot { width: 5px; height: 5px; background: #A31515; border-radius: 50%; flex-shrink: 0; }
+  .ingredient .qty { font-weight: 600; color: #A31515; }
+
+  /* STEPS */
+  .step { display: flex; gap: 14px; margin-bottom: 20px; }
+  .step-num { width: 28px; height: 28px; background: #A31515; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .step-text { font-size: 13px; line-height: 1.7; color: #444; }
+  .step-text strong { color: #2d2d2d; }
+
+  /* TIPS */
+  .tip-box { background: #fdf0f0; border: 1px dashed #A31515; border-radius: 6px; padding: 14px 18px; margin-top: 16px; }
+  .tip-box .tip-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #A31515; margin-bottom: 6px; }
+  .tip-box p { font-size: 12px; color: #555; line-height: 1.6; }
+  .tip-box p + p { margin-top: 6px; }
+
+  /* SALSA BOX */
+  .salsa-box { background: #fdf0f0; border-left: 4px solid #A31515; border-radius: 0 6px 6px 0; padding: 16px 18px; margin-top: 4px; }
+  .salsa-box .salsa-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #A31515; margin-bottom: 10px; }
+  .salsa-ingredients { display: flex; flex-wrap: wrap; gap: 6px 0; }
+  .salsa-ingredient { font-size: 13px; color: #444; padding: 3px 0; width: 50%; display: flex; align-items: center; gap: 7px; }
+  .salsa-ingredient .dot { width: 5px; height: 5px; background: #A31515; border-radius: 50%; flex-shrink: 0; }
+  .salsa-note { margin-top: 10px; font-size: 12px; color: #777; font-style: italic; }
+
+  /* NUTRITION TABLE */
+  .nutrition-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .nutrition-table thead tr { background: #8B0000; color: #fff; }
+  .nutrition-table thead th { padding: 9px 12px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.5px; }
+  .nutrition-table thead th:not(:first-child) { text-align: center; }
+  .nutrition-table tbody tr:nth-child(even) { background: #fdf0f0; }
+  .nutrition-table tbody tr:nth-child(odd) { background: #fff; }
+  .nutrition-table tbody td { padding: 8px 12px; color: #444; border-bottom: 1px solid #eee; }
+  .nutrition-table tbody td:not(:first-child) { text-align: center; }
+  .nutrition-table tfoot tr { background: #2d2d2d; }
+  .nutrition-table tfoot td { padding: 9px 12px; color: #fff; font-weight: 600; font-size: 12px; }
+  .nutrition-table tfoot td:not(:first-child) { text-align: center; }
+  .nutrition-note { margin-top: 10px; font-size: 11px; color: #999; font-style: italic; }
+
+  /* EQUIVALENCES BOX */
+  .equiv-box { background: #fdf0f0; border-left: 4px solid #A31515; border-radius: 0 6px 6px 0; padding: 14px 18px; margin-top: 16px; }
+  .equiv-box .equiv-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #A31515; margin-bottom: 10px; }
+  .equiv-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px dotted #ddd; font-size: 13px; color: #444; }
+  .equiv-row:last-child { border-bottom: none; }
+  .equiv-row .portion { font-weight: 600; color: #2d2d2d; }
+  .equiv-row .cals { color: #A31515; font-weight: 600; }
+
+  /* FOOTER */
+  .footer { background: #8B0000; padding: 20px 40px; text-align: center; }
+  .footer p { font-size: 11px; color: rgba(255,255,255,0.55); }
+  .footer strong { color: rgba(255,255,255,0.8); }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-brand">Recetario</div>
+    <div class="header-title">Ernesto Otero</div>
+    <div class="header-subtitle">Recetas de casa, sin complicaciones</div>
+  </div>
+
+  <!-- RECIPE TITLE -->
+  <div class="recipe-header">
+    <div class="recipe-tag">Cocina Griega</div>
+    <div class="recipe-title">Spanakopita</div>
+    <div class="recipe-audio-note">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+      Receta dictada en audio · Spanakopita
+    </div>
+  </div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="info-item">
+      <div class="info-label">Preparación</div>
+      <div class="info-value">20 min</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Cocción</div>
+      <div class="info-value">25 min</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Porciones</div>
+      <div class="info-value">4–6</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Dificultad</div>
+      <div class="info-value">Media</div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="r-intro">
+    <p>Esta es una receta griega que es muy sana porque tiene muy buenos ingredientes y no lleva mucha grasa. Es de esas recetas que cuando la sacas del horno doradita te da una satisfaccion enorme. La salsa para dipear le pone el toque final.</p>
+  </div>
+
+  <!-- INGREDIENTS -->
+  <div class="section">
+    <div class="section-title">Ingredientes</div>
+    <div class="ingredients-grid">
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">4</span> huevos</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">500 g</span> espinaca congelada</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">200–250 g</span> ricota</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">150 g</span> queso feta</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">~8 hojas</span> pasta filo</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">~40 g</span> mantequilla (para capas)</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">2 cdas</span> aceite de oliva</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">Al gusto</span> ajo picado</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">Al gusto</span> sal y pimienta</span></div>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="section">
+    <div class="section-title">Preparación</div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Cocinar el ajo en frio.</strong> En sarten frio, poner ajo picadito a fuego super lento (2 de 10). Cuando este tibio, agregar 2 cucharadas de aceite de oliva. Dejar que el ajo se cocine super lento 5–7 min sin que se dore.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Saltear la espinaca.</strong> Agregar las espinacas encima del ajo. Saltear a fuego suave (3–4) SIN sal. Esperar que suelten toda el agua y se evapore, maximo 5–10 min. Colar en colador para botar el agua restante.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Preparar el relleno.</strong> Dejar enfriar la espinaca salteada. En otro bol, mezclar los 4 huevos + ricota + feta. Moler todo junto. Agregar sal y pimienta al gusto. Incorporar la espinaca fria y revolver bien.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Armar la torta.</strong> Poner hojas de pasta filo en el molde, una tras otra (4 capas), banando cada una con mantequilla derretida. Poner el relleno. Tapar con otras 4 capas de pasta filo con mantequilla. Envolver bien los bordes.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-text"><strong>Hornear y reposar.</strong> Poner mantequilla encima y un poquito de sal. Hornear a 175°C (350°F) por 20–25 min hasta doradito. Apagar y dejar reposar 10 min antes de cortar.</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-title">Notas &amp; Tips</div>
+      <p>No poner sal a la espinaca antes de saltear, bota mucha agua y queda aguada.</p>
+      <p>La espinaca entera se siente mas en la torta; molida se siente menos. Depende de la textura que prefieras.</p>
+      <p>No cocinar mucho la espinaca, se amarga. A fuego bajo y poco tiempo es la clave.</p>
+      <p>Dejar enfriar bien la espinaca antes de mezclar con el huevo para que no se cocine al contacto.</p>
+    </div>
+  </div>
+
+  <!-- SALSA PARA DIPEAR -->
+  <div class="section">
+    <div class="section-title">Salsa para Dipear</div>
+    <div class="salsa-box">
+      <div class="salsa-title">Ingredientes de la salsa</div>
+      <div class="salsa-ingredients">
+        <div class="salsa-ingredient"><span class="dot"></span><span>Fromage blanc o queso de cabra (brebis)</span></div>
+        <div class="salsa-ingredient"><span class="dot"></span><span>Queso feta desmenuzado</span></div>
+        <div class="salsa-ingredient"><span class="dot"></span><span>Perejil fresco picado</span></div>
+        <div class="salsa-ingredient"><span class="dot"></span><span>Ajo (al gusto)</span></div>
+        <div class="salsa-ingredient"><span class="dot"></span><span>Sal y pimienta</span></div>
+        <div class="salsa-ingredient"><span class="dot"></span><span>Aceite de oliva</span></div>
+        <div class="salsa-ingredient"><span class="dot"></span><span>Paprika</span></div>
+        <div class="salsa-ingredient"><span class="dot"></span><span>Limon amarillo (jugo)</span></div>
+      </div>
+      <p class="salsa-note">Mezclar todos los ingredientes, ajustar sal y pimienta, y terminar con un chorro de aceite de oliva y paprika encima. Servir fria al lado de la spanakopita.</p>
+    </div>
+  </div>
+
+  <!-- NUTRITION -->
+  <div class="section">
+    <div class="section-title">Información Nutricional</div>
+
+    <table class="nutrition-table">
+      <thead>
+        <tr>
+          <th>Ingrediente</th>
+          <th>Por porción (6)</th>
+          <th>Receta completa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>4 huevos</td>
+          <td>47 kcal</td>
+          <td>280 kcal</td>
+        </tr>
+        <tr>
+          <td>Espinaca 500 g</td>
+          <td>19 kcal</td>
+          <td>115 kcal</td>
+        </tr>
+        <tr>
+          <td>Ricota 225 g</td>
+          <td>47 kcal</td>
+          <td>280 kcal</td>
+        </tr>
+        <tr>
+          <td>Feta 150 g</td>
+          <td>66 kcal</td>
+          <td>397 kcal</td>
+        </tr>
+        <tr>
+          <td>Pasta filo ~120 g (8 hojas)</td>
+          <td>58 kcal</td>
+          <td>350 kcal</td>
+        </tr>
+        <tr>
+          <td>Mantequilla ~40 g</td>
+          <td>48 kcal</td>
+          <td>288 kcal</td>
+        </tr>
+        <tr>
+          <td>Aceite oliva 2 cdas</td>
+          <td>40 kcal</td>
+          <td>240 kcal</td>
+        </tr>
+        <tr>
+          <td>Ajo ~5 g</td>
+          <td>1 kcal</td>
+          <td>7 kcal</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>TOTAL</td>
+          <td>326 kcal</td>
+          <td>1,957 kcal</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p class="nutrition-note">Valores estimados. Receta rinde 4–6 porciones. Datos calculados con 6 porciones.</p>
+
+    <div class="equiv-box">
+      <div class="equiv-title">Macros por porción (6 porciones)</div>
+      <div class="equiv-row">
+        <span class="portion">Calorías</span>
+        <span>326 kcal por porcion</span>
+        <span class="cals">1,957 kcal total</span>
+      </div>
+      <div class="equiv-row">
+        <span class="portion">Proteina</span>
+        <span>14.3 g por porcion</span>
+        <span class="cals">85.6 g total</span>
+      </div>
+      <div class="equiv-row">
+        <span class="portion">Carbohidratos</span>
+        <span>15.6 g por porcion</span>
+        <span class="cals">93.5 g total</span>
+      </div>
+      <div class="equiv-row">
+        <span class="portion">Grasas</span>
+        <span>23.5 g por porcion</span>
+        <span class="cals">141 g total</span>
+      </div>
+      <div class="equiv-row">
+        <span class="portion">Si son 4 porciones</span>
+        <span>489 kcal &nbsp;·&nbsp; 21.4g prot &nbsp;·&nbsp; 23.4g carbs</span>
+        <span class="cals">489 kcal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Recetario Ernesto Otero</strong> &nbsp;·&nbsp; Spanakopita</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesto de Albahaca Light con Feta — Recetario Ernesto Otero</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #f5f0eb; color: #2d2d2d; line-height: 1.6; }
+  .wrapper { max-width: 640px; margin: 0 auto; background: #fff; min-height: 100vh; }
+
+  /* HEADER */
+  .header { background: #8B0000; padding: 32px 40px 24px; text-align: center; }
+  .header-brand { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+  .header-title { font-family: 'Playfair Display', Georgia, serif; font-size: 38px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .header-subtitle { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 14px; color: rgba(255,255,255,0.75); }
+
+  /* RECIPE TITLE BLOCK */
+  .recipe-header { padding: 32px 40px 20px; border-bottom: 1px solid #eee; }
+  .recipe-tag { display: inline-block; background: #A31515; color: #fff; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; margin-bottom: 12px; }
+  .recipe-title { font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 700; color: #2d2d2d; line-height: 1.2; }
+  .recipe-audio-note { margin-top: 10px; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #999; font-style: italic; }
+
+  /* INFO BAR */
+  .info-bar { display: flex; justify-content: center; gap: 32px; padding: 14px 40px; background: #fdf0f0; border-bottom: 1px solid #e8b5b5; }
+  .info-item { text-align: center; }
+  .info-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #A31515; font-weight: 600; }
+  .info-value { font-size: 14px; font-weight: 500; color: #2d2d2d; margin-top: 1px; }
+
+  /* INTRO */
+  .r-intro { padding: 24px 40px; border-bottom: 1px solid #eee; }
+  .r-intro p { font-size: 14px; color: #555; line-height: 1.7; font-style: italic; }
+
+  /* SECTIONS */
+  .section { padding: 24px 40px; }
+  .section + .section { border-top: 1px solid #f0f0f0; }
+  .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 700; color: #8B0000; margin-bottom: 14px; padding-bottom: 6px; border-bottom: 2px solid #A31515; display: inline-block; }
+
+  /* INGREDIENTS */
+  .ingredients-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+  .ingredient { font-size: 13px; padding: 5px 0; border-bottom: 1px dotted #ddd; display: flex; align-items: center; gap: 7px; }
+  .ingredient .dot { width: 5px; height: 5px; background: #A31515; border-radius: 50%; flex-shrink: 0; }
+  .ingredient .qty { font-weight: 600; color: #A31515; }
+
+  /* STEPS */
+  .step { display: flex; gap: 14px; margin-bottom: 20px; }
+  .step-num { width: 28px; height: 28px; background: #A31515; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .step-text { font-size: 13px; line-height: 1.7; color: #444; }
+  .step-text strong { color: #2d2d2d; }
+
+  /* TIPS */
+  .tip-box { background: #fdf0f0; border: 1px dashed #A31515; border-radius: 6px; padding: 14px 18px; margin-top: 16px; }
+  .tip-box .tip-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #A31515; margin-bottom: 6px; }
+  .tip-box p { font-size: 12px; color: #555; line-height: 1.6; }
+  .tip-box p + p { margin-top: 6px; }
+
+  /* NUTRITION TABLE */
+  .nutrition-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .nutrition-table thead tr { background: #8B0000; color: #fff; }
+  .nutrition-table thead th { padding: 9px 12px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.5px; }
+  .nutrition-table thead th:not(:first-child) { text-align: center; }
+  .nutrition-table tbody tr:nth-child(even) { background: #fdf0f0; }
+  .nutrition-table tbody tr:nth-child(odd) { background: #fff; }
+  .nutrition-table tbody td { padding: 8px 12px; color: #444; border-bottom: 1px solid #eee; }
+  .nutrition-table tbody td:not(:first-child) { text-align: center; }
+  .nutrition-table tfoot tr { background: #2d2d2d; }
+  .nutrition-table tfoot td { padding: 9px 12px; color: #fff; font-weight: 600; font-size: 12px; }
+  .nutrition-table tfoot td:not(:first-child) { text-align: center; }
+  .nutrition-note { margin-top: 10px; font-size: 11px; color: #999; font-style: italic; }
+
+  /* EQUIVALENCES BOX */
+  .equiv-box { background: #fdf0f0; border-left: 4px solid #A31515; border-radius: 0 6px 6px 0; padding: 14px 18px; margin-top: 16px; }
+  .equiv-box .equiv-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #A31515; margin-bottom: 10px; }
+  .equiv-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px dotted #ddd; font-size: 13px; color: #444; }
+  .equiv-row:last-child { border-bottom: none; }
+  .equiv-row .portion { font-weight: 600; color: #2d2d2d; }
+  .equiv-row .cals { color: #A31515; font-weight: 600; }
+
+  /* FOOTER */
+  .footer { background: #8B0000; padding: 20px 40px; text-align: center; }
+  .footer p { font-size: 11px; color: rgba(255,255,255,0.55); }
+  .footer strong { color: rgba(255,255,255,0.8); }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-brand">Recetario</div>
+    <div class="header-title">Ernesto Otero</div>
+    <div class="header-subtitle">Recetas de casa, sin complicaciones</div>
+  </div>
+
+  <!-- RECIPE TITLE -->
+  <div class="recipe-header">
+    <div class="recipe-tag">Salsas &amp; Aliños</div>
+    <div class="recipe-title">Pesto de Albahaca Light con Feta</div>
+    <div class="recipe-audio-note">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
+      Receta dictada en audio · Pesto.m4a
+    </div>
+  </div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="info-item">
+      <div class="info-label">Preparación</div>
+      <div class="info-value">5 min</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Cocción</div>
+      <div class="info-value">0 min</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Porciones</div>
+      <div class="info-value">~6 cucharaditas</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Dificultad</div>
+      <div class="info-value">Muy fácil</div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="r-intro">
+    <p>Vaya, este pesto es de los más sencillos que vas a encontrar. Agarras una plantita entera de albahaca, le pones un par de cucharaditas de aceite de oliva, sal, pimienta, un poco de queso feta y dos avellanas para darle ese toque cremoso y con cuerpo. Lo licúas todo y listo. Nada de piñones caros ni parmesano, esta versión es más ligera y funciona de maravilla para pastas, tostadas o lo que se te ocurra.</p>
+  </div>
+
+  <!-- INGREDIENTS -->
+  <div class="section">
+    <div class="section-title">Ingredientes</div>
+    <div class="ingredients-grid">
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">1 planta entera</span> albahaca fresca (~30g)</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">2 cucharaditas</span> aceite de oliva</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">20 g</span> queso feta</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">2</span> avellanas</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">Al gusto</span> sal</span></div>
+      <div class="ingredient"><span class="dot"></span><span><span class="qty">Al gusto</span> pimienta negra</span></div>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="section">
+    <div class="section-title">Preparación</div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Preparar la albahaca.</strong> Toma la planta entera de albahaca y separa las hojas. No hace falta ser perfeccionista, las ramitas tiernas también van bien. Enjuaga rápido y seca con papel.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Agregar todo al vaso de la licuadora.</strong> Pon las hojas de albahaca, las dos cucharaditas de aceite de oliva, el queso feta desmenuzado, las dos avellanas, sal y pimienta al gusto.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Licuar.</strong> Procesa todo hasta obtener una pasta homogénea. Si la mezcla queda muy espesa, puedes agregar unas gotitas más de aceite de oliva o un chorrito de agua fría para ayudar a la licuadora.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Rectificar y guardar.</strong> Prueba y ajusta sal y pimienta. Pasa a un frasco con tapa y refrigera. Dura bien hasta 5 días en la nevera.</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-title">Notas &amp; Tips</div>
+      <p>Las avellanas le dan cremosidad sin el costo de los piñones. Si no tienes avellanas, funcionan almendras peladas o nueces de macadamia.</p>
+      <p>El feta reemplaza al parmesano y le da sal y acidez al mismo tiempo. No sueles necesitar agregar mucha sal extra.</p>
+      <p>Para una versión más ligera, reduce el aceite a 1 cucharadita y agrega 1 cucharada de agua fría al licuar.</p>
+    </div>
+  </div>
+
+  <!-- NUTRITION -->
+  <div class="section">
+    <div class="section-title">Información Nutricional</div>
+
+    <table class="nutrition-table">
+      <thead>
+        <tr>
+          <th>Nutriente</th>
+          <th>Por cucharadita</th>
+          <th>Receta completa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Calorías</td>
+          <td>28 kcal</td>
+          <td>167 kcal</td>
+        </tr>
+        <tr>
+          <td>Proteína</td>
+          <td>0.6 g</td>
+          <td>3.5 g</td>
+        </tr>
+        <tr>
+          <td>Carbohidratos</td>
+          <td>0.3 g</td>
+          <td>1.6 g</td>
+        </tr>
+        <tr>
+          <td>Grasas</td>
+          <td>2.7 g</td>
+          <td>16.2 g</td>
+        </tr>
+        <tr>
+          <td>Fibra</td>
+          <td>&lt;0.1 g</td>
+          <td>~0.5 g</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Rendimiento total</td>
+          <td>~6 cucharaditas</td>
+          <td>~90 ml</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p class="nutrition-note">Valores estimados. 1 cucharadita = ~15 g de pesto. La receta rinde aproximadamente 6 porciones.</p>
+
+    <div class="equiv-box">
+      <div class="equiv-title">Equivalencias por porción</div>
+      <div class="equiv-row">
+        <span class="portion">2 cucharaditas</span>
+        <span>~56 kcal &nbsp;·&nbsp; 1.2g prot &nbsp;·&nbsp; 5.4g grasa</span>
+        <span class="cals">56 kcal</span>
+      </div>
+      <div class="equiv-row">
+        <span class="portion">3 cucharaditas</span>
+        <span>~84 kcal &nbsp;·&nbsp; 1.8g prot &nbsp;·&nbsp; 8.1g grasa</span>
+        <span class="cals">84 kcal</span>
+      </div>
+      <div class="equiv-row">
+        <span class="portion">Receta completa (6 cuch.)</span>
+        <span>~167 kcal &nbsp;·&nbsp; 3.5g prot &nbsp;·&nbsp; 16.2g grasa</span>
+        <span class="cals">167 kcal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Recetario Ernesto Otero</strong> &nbsp;·&nbsp; Pesto de Albahaca Light con Feta</p>
+  </div>
+
+</div>
+</body>
+</html>

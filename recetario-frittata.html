@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frittata Light — Recetario Ernesto Otero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5e8e8;
+      font-family: 'Inter', sans-serif;
+      color: #2a2a2a;
+      padding: 32px 16px;
+    }
+
+    .wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(139,0,0,0.10);
+    }
+
+    /* HEADER */
+    .header {
+      background: #ffffff;
+      text-align: center;
+      padding: 36px 32px 24px;
+      border-bottom: 3px solid #8B0000;
+    }
+    .header .brand {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #8B0000;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #8B0000;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .header .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #999;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    /* INFO BAR */
+    .info-bar {
+      background: #fdf0f0;
+      border-top: 1px solid #f0d0d0;
+      border-bottom: 1px solid #f0d0d0;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .info-item {
+      flex: 1;
+      text-align: center;
+      padding: 16px 12px;
+      border-right: 1px solid #f0d0d0;
+    }
+    .info-item:last-child { border-right: none; }
+    .info-item .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #A31515;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .info-item .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2a2a2a;
+    }
+
+    /* BODY */
+    .body {
+      padding: 32px 36px;
+    }
+
+    /* INTRO */
+    .intro {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 32px;
+      border-left: 3px solid #8B0000;
+      padding-left: 16px;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #8B0000;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0d0d0;
+    }
+
+    /* INGREDIENTS GRID */
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 20px;
+      margin-bottom: 36px;
+    }
+    .ingredient-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 14px;
+      color: #333;
+      padding: 6px 0;
+      border-bottom: 1px dotted #f0d0d0;
+    }
+    .ingredient-item .dot {
+      width: 7px;
+      height: 7px;
+      background: #8B0000;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ingredient-item .qty {
+      font-weight: 600;
+      color: #8B0000;
+      white-space: nowrap;
+      min-width: 36px;
+    }
+    .ingredient-item .name {
+      color: #444;
+    }
+
+    /* STEPS */
+    .steps {
+      margin-bottom: 36px;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: #8B0000;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-text {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #444;
+      padding-top: 5px;
+    }
+
+    /* TIPS BOX */
+    .tips-box {
+      background: #fdf0f0;
+      border: 1px solid #f0c8c8;
+      border-left: 4px solid #8B0000;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 36px;
+    }
+    .tips-box .tips-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #8B0000;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 12px;
+    }
+    .tips-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .tips-box ul li {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 6px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .tips-box ul li::before {
+      content: "•";
+      color: #A31515;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* NUTRITION TABLE */
+    .nutrition-section {
+      margin-bottom: 16px;
+    }
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .nutrition-table thead th {
+      background: #8B0000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .nutrition-table thead th:not(:first-child) {
+      text-align: center;
+    }
+    .nutrition-table tbody tr:nth-child(even) {
+      background: #fdf0f0;
+    }
+    .nutrition-table tbody tr:nth-child(odd) {
+      background: #fff;
+    }
+    .nutrition-table tbody td {
+      padding: 9px 12px;
+      color: #444;
+      border-bottom: 1px solid #f0d0d0;
+    }
+    .nutrition-table tbody td:not(:first-child) {
+      text-align: center;
+      font-weight: 500;
+    }
+    .nutrition-table tfoot td {
+      padding: 10px 12px;
+      background: #fdf0f0;
+      font-weight: 700;
+      color: #8B0000;
+      border-top: 2px solid #8B0000;
+      font-size: 13px;
+    }
+    .nutrition-table tfoot td:not(:first-child) {
+      text-align: center;
+    }
+    .nutrition-note {
+      font-size: 11px;
+      color: #999;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #8B0000;
+      text-align: center;
+      padding: 18px 24px;
+      color: rgba(255,255,255,0.75);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .footer strong {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">Recetario</div>
+    <h1>Frittata Light</h1>
+    <div class="subtitle">Ernesto Otero &nbsp;·&nbsp; Audio original</div>
+  </div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="info-item">
+      <span class="label">Prep</span>
+      <span class="value">5 min</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Cocción</span>
+      <span class="value">10 min</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Porciones</span>
+      <span class="value">1 – 2</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- INTRO -->
+    <p class="intro">
+      Esta frittata la hago cuando quiero algo que llene de verdad y encima te deje bien cargado de proteína. La combinación de claras con huevos enteros le da textura sin pasarte de grasa, y el cottage con feta le mete un sabor brutal. Con el pesto casero ya ni te cuento, queda de otro nivel.
+    </p>
+
+    <!-- INGREDIENTS -->
+    <div class="section-title">Ingredientes</div>
+    <div class="ingredients-grid">
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">3</span>
+        <span class="name">huevos enteros</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">3</span>
+        <span class="name">claras de huevo</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">60 g</span>
+        <span class="name">queso cottage</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">20 g</span>
+        <span class="name">queso feta</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">5</span>
+        <span class="name">tomates cherry</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">3 cdtas</span>
+        <span class="name">pesto casero</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">½ cdta</span>
+        <span class="name">aceite de oliva</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">c/n</span>
+        <span class="name">sal y pimienta</span>
+      </div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="section-title">Preparación</div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-text">
+          Bate juntos los 3 huevos enteros con las 3 claras. Le pones sal y pimienta al gusto. Reserva.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-text">
+          Corta los tomates cherry a la mitad y desmorona el feta en trozos pequeños. Mezcla el cottage con el pesto — esa mezcla va a ser tu relleno cremoso.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-text">
+          Calienta la sartén a fuego medio y agrega la media cucharadita de aceite. Cuando esté caliente, vierte la mezcla de huevos y deja que cuaje por los bordes sin mover demasiado.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-text">
+          Cuando la superficie ya no esté completamente líquida (pero todavía húmeda en el centro), distribuye los tomates cherry y el feta sobre la mitad del omelette.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-text">
+          Agrega la mezcla de cottage con pesto sobre el mismo lado. Dobla el omelette a la mitad, tapa la sartén 1-2 minutos más para que el relleno se caliente bien, y sirve.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TIPS -->
+    <div class="tips-box">
+      <div class="tips-title">Notas &amp; Tips</div>
+      <ul>
+        <li>El pesto tiene que ser casero — la diferencia con el de tarro es brutal y ya lo tienes hecho de antes.</li>
+        <li>Si la sartén es antiadherente de buena calidad, con media cucharadita de aceite sobra. No te pases o te queda grasoso.</li>
+        <li>Para 2 porciones, simplemente parte el omelette a la mitad al servir. Queda igual de bien.</li>
+        <li>El cottage se derrite un poco con el calor y le da esa textura cremosa que hace que no necesites nada más.</li>
+      </ul>
+    </div>
+
+    <!-- NUTRITION -->
+    <div class="nutrition-section">
+      <div class="section-title">Información Nutricional</div>
+      <table class="nutrition-table">
+        <thead>
+          <tr>
+            <th>Ingrediente</th>
+            <th>Kcal</th>
+            <th>Proteína</th>
+            <th>Carbs</th>
+            <th>Grasa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3 huevos enteros</td>
+            <td>210</td>
+            <td>18 g</td>
+            <td>1.5 g</td>
+            <td>15 g</td>
+          </tr>
+          <tr>
+            <td>3 claras de huevo</td>
+            <td>51</td>
+            <td>11 g</td>
+            <td>0.7 g</td>
+            <td>0.2 g</td>
+          </tr>
+          <tr>
+            <td>Cottage 60 g</td>
+            <td>44</td>
+            <td>7.2 g</td>
+            <td>2 g</td>
+            <td>0.6 g</td>
+          </tr>
+          <tr>
+            <td>Feta 20 g</td>
+            <td>53</td>
+            <td>2.8 g</td>
+            <td>0.8 g</td>
+            <td>4.3 g</td>
+          </tr>
+          <tr>
+            <td>Tomates cherry (5 ud.)</td>
+            <td>14</td>
+            <td>0.7 g</td>
+            <td>3 g</td>
+            <td>0.2 g</td>
+          </tr>
+          <tr>
+            <td>Pesto casero (3 cdtas)</td>
+            <td>84</td>
+            <td>1.8 g</td>
+            <td>0.9 g</td>
+            <td>8.1 g</td>
+          </tr>
+          <tr>
+            <td>Aceite de oliva (½ cdta)</td>
+            <td>22</td>
+            <td>0 g</td>
+            <td>0 g</td>
+            <td>2.5 g</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>TOTAL (receta completa)</td>
+            <td>478 kcal</td>
+            <td>41.5 g</td>
+            <td>8.9 g</td>
+            <td>30.9 g</td>
+          </tr>
+          <tr>
+            <td>Por porción (÷2)</td>
+            <td>239 kcal</td>
+            <td>20.8 g</td>
+            <td>4.5 g</td>
+            <td>15.5 g</td>
+          </tr>
+        </tfoot>
+      </table>
+      <p class="nutrition-note">Valores estimados. Fibra total: ~1.2 g (receta completa) / ~0.6 g por porción.</p>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Recetario Ernesto Otero</strong> &nbsp;·&nbsp; Audio original · Sin fotos
+  </div>
+
+</div><!-- /wrapper -->
+</body>
+</html>

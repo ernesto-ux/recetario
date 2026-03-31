@@ -1,5 +1,29 @@
 # Changelog — Recetario Ernesto Otero
 
+## [1.3.0] — 31 marzo 2026
+### Agregado
+- **Calculadora Nutricional** interactiva en el recetario principal
+  - Desplegable por receta con filtros y buscador
+  - Input por gramos o por porciones, calculo automatico de macros
+  - Desglose por ingrediente en tabla
+  - Total del dia sumando todas las recetas abiertas
+- **Informacion nutricional** (calorias, proteina, carbs, grasa, fibra) en las 4 recetas
+  - Tabla por ingrediente + totales por porcion y receta completa
+
+## [1.2.0] — 31 marzo 2026
+### Agregado
+- **Pesto de Albahaca Light con Feta** — tercera receta
+  - Audio transcrito con mlx-whisper (Pesto.m4a, 29s)
+  - Version light: feta + avellanas en lugar de parmesano + piñones
+  - 167 kcal toda la receta, 28 kcal por cucharadita
+- **Frittata Light** — cuarta receta
+  - Audio transcrito con mlx-whisper (Omelette.m4a, 28s)
+  - 3 claras + 3 huevos enteros, cottage, feta, cherry, pesto casero
+  - 478 kcal, 41.5g proteina por receta completa
+- HTMLs individuales para las 4 recetas (`recetario-pesto.html`, `recetario-frittata.html`, `recetario-spanakopita.html`, `recetario-lentejas.html`)
+- PDFs actualizados para las 4 recetas
+- Carpeta `Audios recetas/` para audios de recetas sin video
+
 ## [1.1.0] — 2026-03-30
 ### Agregado
 - **Lentejas con Carne y Vegetales** — segunda receta
