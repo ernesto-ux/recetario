@@ -4,8 +4,8 @@
 ### Agregado
 - **Omelette Ligera con Jamon** — quinta receta
   - Receta directa (sin audio/video), ingredientes dictados
-  - 1 huevo entero + 1 yema extra + 2 sprays AOVE + 1 rodaja jamon Fleury Michon -25% sal sin nitrite
-  - 161 kcal, 13.5g proteina por receta completa (~93g)
+  - 2 claras + 1 yema + 2 sprays AOVE + 1 rodaja jamon Fleury Michon -25% sal sin nitrite
+  - 125 kcal, 14.5g proteina por receta completa (~109g)
   - HTML individual, PDF, integrada en recetario principal y calculadora
 
 ## [1.3.0] — 31 marzo 2026
