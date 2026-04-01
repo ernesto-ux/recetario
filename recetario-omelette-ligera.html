@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omelette Ligera con Jamón — Recetario Ernesto Otero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5e8e8;
+      font-family: 'Inter', sans-serif;
+      color: #2a2a2a;
+      padding: 32px 16px;
+    }
+
+    .wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(139,0,0,0.10);
+    }
+
+    /* HEADER */
+    .header {
+      background: #ffffff;
+      text-align: center;
+      padding: 36px 32px 24px;
+      border-bottom: 3px solid #8B0000;
+    }
+    .header .brand {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #8B0000;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #8B0000;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .header .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #999;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    /* INFO BAR */
+    .info-bar {
+      background: #fdf0f0;
+      border-top: 1px solid #f0d0d0;
+      border-bottom: 1px solid #f0d0d0;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .info-item {
+      flex: 1;
+      text-align: center;
+      padding: 16px 12px;
+      border-right: 1px solid #f0d0d0;
+    }
+    .info-item:last-child { border-right: none; }
+    .info-item .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #A31515;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .info-item .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2a2a2a;
+    }
+
+    /* BODY */
+    .body {
+      padding: 32px 36px;
+    }
+
+    /* INTRO */
+    .intro {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 32px;
+      border-left: 3px solid #8B0000;
+      padding-left: 16px;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #8B0000;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0d0d0;
+    }
+
+    /* INGREDIENTS GRID */
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 20px;
+      margin-bottom: 36px;
+    }
+    .ingredient-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 14px;
+      color: #333;
+      padding: 6px 0;
+      border-bottom: 1px dotted #f0d0d0;
+    }
+    .ingredient-item .dot {
+      width: 7px;
+      height: 7px;
+      background: #8B0000;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ingredient-item .qty {
+      font-weight: 600;
+      color: #8B0000;
+      white-space: nowrap;
+      min-width: 36px;
+    }
+    .ingredient-item .name {
+      color: #444;
+    }
+
+    /* STEPS */
+    .steps {
+      margin-bottom: 36px;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: #8B0000;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-text {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #444;
+      padding-top: 5px;
+    }
+
+    /* TIPS BOX */
+    .tips-box {
+      background: #fdf0f0;
+      border: 1px solid #f0c8c8;
+      border-left: 4px solid #8B0000;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 36px;
+    }
+    .tips-box .tips-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #8B0000;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 12px;
+    }
+    .tips-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .tips-box ul li {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 6px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .tips-box ul li::before {
+      content: "\2022";
+      color: #A31515;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* NUTRITION TABLE */
+    .nutrition-section {
+      margin-bottom: 16px;
+    }
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .nutrition-table thead th {
+      background: #8B0000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .nutrition-table thead th:not(:first-child) {
+      text-align: center;
+    }
+    .nutrition-table tbody tr:nth-child(even) {
+      background: #fdf0f0;
+    }
+    .nutrition-table tbody tr:nth-child(odd) {
+      background: #fff;
+    }
+    .nutrition-table tbody td {
+      padding: 9px 12px;
+      color: #444;
+      border-bottom: 1px solid #f0d0d0;
+    }
+    .nutrition-table tbody td:not(:first-child) {
+      text-align: center;
+      font-weight: 500;
+    }
+    .nutrition-table tfoot td {
+      padding: 10px 12px;
+      background: #fdf0f0;
+      font-weight: 700;
+      color: #8B0000;
+      border-top: 2px solid #8B0000;
+      font-size: 13px;
+    }
+    .nutrition-table tfoot td:not(:first-child) {
+      text-align: center;
+    }
+    .nutrition-note {
+      font-size: 11px;
+      color: #999;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #8B0000;
+      text-align: center;
+      padding: 18px 24px;
+      color: rgba(255,255,255,0.75);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .footer strong {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">Recetario</div>
+    <h1>Omelette Ligera con Jamon</h1>
+    <div class="subtitle">Ernesto Otero &nbsp;&middot;&nbsp; Receta directa</div>
+  </div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="info-item">
+      <span class="label">Prep</span>
+      <span class="value">2 min</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Coccion</span>
+      <span class="value">3 min</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Porciones</span>
+      <span class="value">1</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- INTRO -->
+    <p class="intro">
+      Esta es la omelette que hago cuando quiero algo rapido, ligero y con buena proteina. Un huevo entero, una yema extra para que quede cremosa, un par de sprays de aceite y una rodaja de jamon bueno. Nada mas. En 5 minutos la tenes lista y no llegas ni a 170 calorias.
+    </p>
+
+    <!-- INGREDIENTS -->
+    <div class="section-title">Ingredientes</div>
+    <div class="ingredients-grid">
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">1</span>
+        <span class="name">huevo entero</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">1</span>
+        <span class="name">yema de huevo</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">2 sprays</span>
+        <span class="name">aceite de oliva virgen extra</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">1 rodaja</span>
+        <span class="name">jamon Fleury Michon porc -25% sal, sin nitrite</span>
+      </div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="section-title">Preparacion</div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-text">
+          Bate el huevo entero con la yema extra en un bowl. No le pongas sal porque el jamon ya tiene suficiente.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-text">
+          Sarten antiadherente a fuego medio. Le das 2 sprays de aceite de oliva y esperas a que caliente.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-text">
+          Vierte la mezcla de huevo. Cuando empiece a cuajar por los bordes, pone la rodaja de jamon en el centro (o cortada en tiritas si preferis).
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-text">
+          Dobla la omelette a la mitad, deja 30 segundos mas con el fuego bajo para que termine de cuajar por dentro, y listo. Sirve.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TIPS -->
+    <div class="tips-box">
+      <div class="tips-title">Notas &amp; Tips</div>
+      <ul>
+        <li>La yema extra es el truco. Le da cremosidad sin sumar demasiada grasa. Solo 55 kcal mas.</li>
+        <li>El jamon Fleury Michon -25% sal sin nitrite es de los mejores que encontras en supermercado. Buen sabor sin pasarte de sodio.</li>
+        <li>No le pongas sal al huevo. El jamon ya le da todo el sabor salado que necesita.</li>
+        <li>Si queres aun menos grasa, cambia la yema extra por una clara. Pero vas a perder cremosidad.</li>
+      </ul>
+    </div>
+
+    <!-- NUTRITION -->
+    <div class="nutrition-section">
+      <div class="section-title">Informacion Nutricional</div>
+      <table class="nutrition-table">
+        <thead>
+          <tr>
+            <th>Ingrediente</th>
+            <th>Kcal</th>
+            <th>Proteina</th>
+            <th>Carbs</th>
+            <th>Grasa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 huevo entero (~50 g)</td>
+            <td>70</td>
+            <td>6.3 g</td>
+            <td>0.4 g</td>
+            <td>4.7 g</td>
+          </tr>
+          <tr>
+            <td>1 yema extra (~17 g)</td>
+            <td>55</td>
+            <td>2.7 g</td>
+            <td>0.6 g</td>
+            <td>4.5 g</td>
+          </tr>
+          <tr>
+            <td>2 sprays AOVE (~1 g)</td>
+            <td>9</td>
+            <td>0 g</td>
+            <td>0 g</td>
+            <td>1.0 g</td>
+          </tr>
+          <tr>
+            <td>1 rodaja jamon FM (~25 g)</td>
+            <td>27</td>
+            <td>4.5 g</td>
+            <td>0.3 g</td>
+            <td>0.8 g</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>TOTAL (~93 g)</td>
+            <td>161 kcal</td>
+            <td>13.5 g</td>
+            <td>1.3 g</td>
+            <td>11.0 g</td>
+          </tr>
+        </tfoot>
+      </table>
+      <p class="nutrition-note">Valores estimados. Fibra total: 0 g. Receta individual (1 porcion).</p>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Recetario Ernesto Otero</strong> &nbsp;&middot;&nbsp; Receta directa &middot; Sin fotos
+  </div>
+
+</div><!-- /wrapper -->
+</body>
+</html>
