@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omelette au Cottage, Salmon, Pimiento y Espinacas — Recetario Ernesto Otero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5e8e8;
+      font-family: 'Inter', sans-serif;
+      color: #2a2a2a;
+      padding: 32px 16px;
+    }
+
+    .wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(139,0,0,0.10);
+    }
+
+    .header {
+      background: #ffffff;
+      text-align: center;
+      padding: 36px 32px 24px;
+      border-bottom: 3px solid #8B0000;
+    }
+    .header .brand {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #8B0000;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #8B0000;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .header .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #999;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .info-bar {
+      background: #fdf0f0;
+      border-top: 1px solid #f0d0d0;
+      border-bottom: 1px solid #f0d0d0;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .info-item {
+      flex: 1;
+      text-align: center;
+      padding: 16px 12px;
+      border-right: 1px solid #f0d0d0;
+    }
+    .info-item:last-child { border-right: none; }
+    .info-item .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #A31515;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .info-item .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2a2a2a;
+    }
+
+    .body { padding: 32px 36px; }
+
+    .intro {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 32px;
+      border-left: 3px solid #8B0000;
+      padding-left: 16px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #8B0000;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0d0d0;
+    }
+
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 20px;
+      margin-bottom: 36px;
+    }
+    .ingredient-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 14px;
+      color: #333;
+      padding: 6px 0;
+      border-bottom: 1px dotted #f0d0d0;
+    }
+    .ingredient-item .dot {
+      width: 7px;
+      height: 7px;
+      background: #8B0000;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ingredient-item .qty {
+      font-weight: 600;
+      color: #8B0000;
+      white-space: nowrap;
+      min-width: 36px;
+    }
+    .ingredient-item .name { color: #444; }
+
+    .steps { margin-bottom: 36px; }
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: #8B0000;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-text {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #444;
+      padding-top: 5px;
+    }
+
+    .tips-box {
+      background: #fdf0f0;
+      border: 1px solid #f0c8c8;
+      border-left: 4px solid #8B0000;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 36px;
+    }
+    .tips-box .tips-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #8B0000;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 12px;
+    }
+    .tips-box ul { list-style: none; padding: 0; }
+    .tips-box ul li {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 6px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .tips-box ul li::before {
+      content: "\2022";
+      color: #A31515;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .nutrition-section { margin-bottom: 16px; }
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .nutrition-table thead th {
+      background: #8B0000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .nutrition-table thead th:not(:first-child) { text-align: center; }
+    .nutrition-table tbody tr:nth-child(even) { background: #fdf0f0; }
+    .nutrition-table tbody tr:nth-child(odd) { background: #fff; }
+    .nutrition-table tbody td {
+      padding: 9px 12px;
+      color: #444;
+      border-bottom: 1px solid #f0d0d0;
+    }
+    .nutrition-table tbody td:not(:first-child) {
+      text-align: center;
+      font-weight: 500;
+    }
+    .nutrition-table tfoot td {
+      padding: 10px 12px;
+      background: #fdf0f0;
+      font-weight: 700;
+      color: #8B0000;
+      border-top: 2px solid #8B0000;
+      font-size: 13px;
+    }
+    .nutrition-table tfoot td:not(:first-child) { text-align: center; }
+    .nutrition-note {
+      font-size: 11px;
+      color: #999;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .footer {
+      background: #8B0000;
+      text-align: center;
+      padding: 18px 24px;
+      color: rgba(255,255,255,0.75);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .footer strong { color: #fff; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">Recetario</div>
+    <h1>Omelette au Cottage, Salmon, Pimiento y Espinacas</h1>
+    <div class="subtitle">Ernesto Otero &nbsp;&middot;&nbsp; Receta directa</div>
+  </div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="info-item">
+      <span class="label">Prep</span>
+      <span class="value">5 min</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Coccion</span>
+      <span class="value">5 min</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Porciones</span>
+      <span class="value">1</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- INTRO -->
+    <p class="intro">
+      Esta omelette es de las que mas hago cuando quiero cenar bien y liviano. Le pones un monton de proteina con las claras, el cottage y el salmon ahumado, y le das frescura con las espinacas y el pimiento. El eneldo le da ese toque nordico que combina perfecto con el salmon. Tenes casi 51 gramos de proteina en menos de 500 calorias. Es de esas recetas que parece fancy pero la haces en 10 minutos.
+    </p>
+
+    <!-- INGREDIENTS -->
+    <div class="section-title">Ingredientes</div>
+    <div class="ingredients-grid">
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">5</span>
+        <span class="name">claras de huevo</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">1</span>
+        <span class="name">huevo entero</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">2 tranches</span>
+        <span class="name">salmon Labeyrie norvege</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">100 g</span>
+        <span class="name">cottage cheese</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">50 g</span>
+        <span class="name">pimiento rojo</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">30 g</span>
+        <span class="name">espinaca fresca</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">30 g</span>
+        <span class="name">aguacate</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">5 g</span>
+        <span class="name">aceite de oliva</span>
+      </div>
+      <div class="ingredient-item">
+        <div class="dot"></div>
+        <span class="qty">c/n</span>
+        <span class="name">eneldo, ajo, perejil</span>
+      </div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="section-title">Preparacion</div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-text">
+          Bate las 5 claras con el huevo entero en un bowl. Pica fino el ajo y el eneldo, y agregalos a la mezcla.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-text">
+          Corta el pimiento rojo en cubitos chicos y las espinacas en tiras. Corta el salmon ahumado en pedacitos.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-text">
+          Sarten antiadherente a fuego medio con el aceite de oliva. Saltea el pimiento 1 minuto, luego agrega las espinacas hasta que se marchiten.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-text">
+          Vierte la mezcla de huevo sobre los vegetales. Cuando empiece a cuajar por los bordes, distribuye el salmon ahumado y cucharadas de cottage por encima.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-text">
+          Dobla la omelette a la mitad (o dejala abierta tipo frittata). Tapa 1 minuto a fuego bajo para que el cottage se entibie. Sirve con el aguacate cortado en laminas y perejil fresco picado por encima.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TIPS -->
+    <div class="tips-box">
+      <div class="tips-title">Notas &amp; Tips</div>
+      <ul>
+        <li>El eneldo es clave con el salmon. Si no tenes, cebollino funciona bien tambien.</li>
+        <li>El cottage no se derrite, se entibia y queda cremoso. No lo cocines demasiado.</li>
+        <li>El aguacate va crudo al final. Le da cremosidad y grasas buenas sin cocinarlo.</li>
+        <li>Si queres aun mas proteina, subi a 6 claras. Son solo 17 kcal mas por clara.</li>
+        <li>El salmon Labeyrie norvege tiene buen ratio proteina/grasa. Dos tranches son unos 60g.</li>
+      </ul>
+    </div>
+
+    <!-- NUTRITION -->
+    <div class="nutrition-section">
+      <div class="section-title">Informacion Nutricional</div>
+      <table class="nutrition-table">
+        <thead>
+          <tr>
+            <th>Ingrediente</th>
+            <th>Kcal</th>
+            <th>Proteina</th>
+            <th>Carbs</th>
+            <th>Grasa</th>
+            <th>Fibra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5 claras de huevo (~165 g)</td>
+            <td>85</td>
+            <td>18.0 g</td>
+            <td>1.2 g</td>
+            <td>0.3 g</td>
+            <td>0 g</td>
+          </tr>
+          <tr>
+            <td>1 huevo entero (~50 g)</td>
+            <td>72</td>
+            <td>6.3 g</td>
+            <td>0.4 g</td>
+            <td>4.8 g</td>
+            <td>0 g</td>
+          </tr>
+          <tr>
+            <td>2 tranches salmon (~60 g)</td>
+            <td>117</td>
+            <td>13.2 g</td>
+            <td>0 g</td>
+            <td>7.2 g</td>
+            <td>0 g</td>
+          </tr>
+          <tr>
+            <td>Cottage cheese (100 g)</td>
+            <td>98</td>
+            <td>11.1 g</td>
+            <td>3.4 g</td>
+            <td>4.3 g</td>
+            <td>0 g</td>
+          </tr>
+          <tr>
+            <td>Pimiento rojo (50 g)</td>
+            <td>16</td>
+            <td>0.5 g</td>
+            <td>3.0 g</td>
+            <td>0.2 g</td>
+            <td>1.0 g</td>
+          </tr>
+          <tr>
+            <td>Espinaca (30 g)</td>
+            <td>7</td>
+            <td>0.9 g</td>
+            <td>1.1 g</td>
+            <td>0.1 g</td>
+            <td>0.7 g</td>
+          </tr>
+          <tr>
+            <td>Aguacate (30 g)</td>
+            <td>48</td>
+            <td>0.6 g</td>
+            <td>2.6 g</td>
+            <td>4.4 g</td>
+            <td>2.0 g</td>
+          </tr>
+          <tr>
+            <td>Aceite de oliva (5 g)</td>
+            <td>44</td>
+            <td>0 g</td>
+            <td>0 g</td>
+            <td>5.0 g</td>
+            <td>0 g</td>
+          </tr>
+          <tr>
+            <td>Eneldo, ajo, perejil (~5 g)</td>
+            <td>3</td>
+            <td>0.2 g</td>
+            <td>0.4 g</td>
+            <td>0.1 g</td>
+            <td>0.2 g</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>TOTAL (~495 g)</td>
+            <td>490 kcal</td>
+            <td>50.8 g</td>
+            <td>12.1 g</td>
+            <td>26.4 g</td>
+            <td>3.9 g</td>
+          </tr>
+        </tfoot>
+      </table>
+      <p class="nutrition-note">Valores estimados. Receta completa = 1 porcion (~495 g). Por 100g: 99 kcal, 10.3g prot.</p>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Recetario Ernesto Otero</strong> &nbsp;&middot;&nbsp; Receta directa &middot; Sin fotos
+  </div>
+
+</div><!-- /wrapper -->
+</body>
+</html>

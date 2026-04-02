@@ -1,5 +1,13 @@
 # Changelog — Recetario Ernesto Otero
 
+## [1.5.0] — 2 abril 2026
+### Agregado
+- **Omelette au Cottage, Salmon, Pimiento y Espinacas** — sexta receta
+  - Receta directa (sin audio/video), ingredientes dictados
+  - 5 claras + 1 huevo entero + salmon Labeyrie + cottage + pimiento + espinaca + aguacate + eneldo
+  - 490 kcal, 50.8g proteina por receta completa (~495g)
+  - HTML individual, PDF, integrada en recetario principal y calculadora
+
 ## [1.4.0] — 1 abril 2026
 ### Agregado
 - **Omelette Ligera con Jamon** — quinta receta
