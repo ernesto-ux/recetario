@@ -1,5 +1,15 @@
 # Changelog — Recetario Ernesto Otero
 
+## [1.6.0] — 7 mayo 2026
+### Agregado
+- **Lasagna de Pollo y Pesto** — receta de comfort food
+  - Receta directa (sin audio/video), ingredientes dictados por Ernesto
+  - 9 hojas Barilla precocida + 200g mozzarella maxi + 3 faisselle 125g + pesto casero (40g AOVE, 60g parmesano, 4 avellanas, albahaca, ajo) + 420g champignons de Paris + 300g pollo + bechamel (1L leche demi-écrémée + cúrcuma + pimentón) + 20g parmesano rapé topping
+  - 3195 kcal totales, 243.8g proteína, ~2070g cocido (6 porciones de ~345g)
+  - 154 kcal/100g cocido · 11.8g prot · 8.7g carbs · 8.2g fat
+  - HTML standalone, PDF, integrada en calculadora del recetario combinado
+  - Agregada a FOOD_DATABASE de NutrIA y a local-prices.json (€1.40/100g)
+
 ## [1.5.0] — 2 abril 2026
 ### Agregado
 - **Omelette au Cottage, Salmon, Pimiento y Espinacas** — sexta receta

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lasagna de Pollo y Pesto — Recetario Ernesto Otero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5e8e8;
+      font-family: 'Inter', sans-serif;
+      color: #2a2a2a;
+      padding: 32px 16px;
+    }
+
+    .wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(139,0,0,0.10);
+    }
+
+    .header {
+      background: #ffffff;
+      text-align: center;
+      padding: 36px 32px 24px;
+      border-bottom: 3px solid #8B0000;
+    }
+    .header .brand {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #8B0000;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #8B0000;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .header .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #999;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .recipe-emoji {
+      text-align: center;
+      font-size: 64px;
+      padding: 24px 0;
+      background: #fdf0f0;
+      border-bottom: 1px solid #f0d0d0;
+    }
+
+    .info-bar {
+      background: #fdf0f0;
+      border-top: 1px solid #f0d0d0;
+      border-bottom: 1px solid #f0d0d0;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .info-item {
+      flex: 1;
+      text-align: center;
+      padding: 16px 12px;
+      border-right: 1px solid #f0d0d0;
+    }
+    .info-item:last-child { border-right: none; }
+    .info-item .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #A31515;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .info-item .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2a2a2a;
+    }
+
+    .body { padding: 32px 36px; }
+
+    .intro {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 32px;
+      border-left: 3px solid #8B0000;
+      padding-left: 16px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #8B0000;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0d0d0;
+    }
+
+    .ingredients-section { margin-bottom: 28px; }
+    .ingredients-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #A31515;
+      margin: 18px 0 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 20px;
+    }
+    .ingredient-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 14px;
+      color: #333;
+      padding: 6px 0;
+      border-bottom: 1px dotted #f0d0d0;
+    }
+    .ingredient-item .dot {
+      width: 7px;
+      height: 7px;
+      background: #8B0000;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ingredient-item .qty {
+      font-weight: 600;
+      color: #8B0000;
+      white-space: nowrap;
+      min-width: 36px;
+    }
+    .ingredient-item .name { color: #444; }
+
+    .steps { margin-bottom: 36px; }
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: #8B0000;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-text {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #444;
+      padding-top: 5px;
+    }
+
+    .tips-box {
+      background: #fdf0f0;
+      border: 1px solid #f0c8c8;
+      border-left: 4px solid #8B0000;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 36px;
+    }
+    .tips-box .tips-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #8B0000;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 12px;
+    }
+    .tips-box ul { list-style: none; padding: 0; }
+    .tips-box ul li {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 6px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .tips-box ul li::before {
+      content: "\2022";
+      color: #A31515;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 36px;
+      font-size: 12.5px;
+    }
+    .nutrition-table thead th {
+      background: #8B0000;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      padding: 10px 8px;
+      text-align: left;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+    .nutrition-table thead th:not(:first-child) { text-align: center; }
+    .nutrition-table tbody tr:nth-child(even) { background: #fdf0f0; }
+    .nutrition-table tbody tr:nth-child(odd) { background: #fff; }
+    .nutrition-table tbody td {
+      padding: 8px;
+      border-bottom: 1px solid #f0d0d0;
+      color: #444;
+    }
+    .nutrition-table tbody td:not(:first-child) {
+      text-align: center;
+    }
+    .nutrition-table tfoot td {
+      background: #fdf0f0;
+      font-weight: 700;
+      color: #8B0000;
+      padding: 10px 8px;
+      border-top: 2px solid #8B0000;
+    }
+    .nutrition-table tfoot td:not(:first-child) { text-align: center; }
+    .nutrition-note {
+      font-size: 11.5px;
+      color: #888;
+      font-style: italic;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .footer {
+      background: #fdf0f0;
+      padding: 20px;
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+      letter-spacing: 1px;
+      border-top: 1px solid #f0d0d0;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">Recetario</div>
+    <h1>Lasagna de Pollo y Pesto</h1>
+    <div class="subtitle">Ernesto Otero &nbsp;&middot;&nbsp; Comfort Food</div>
+  </div>
+
+  <!-- EMOJI HERO -->
+  <div class="recipe-emoji">&#127837;&#127819;&#129372;</div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="info-item">
+      <span class="label">Prep</span>
+      <span class="value">35 min</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Horno</span>
+      <span class="value">30 min</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Porciones</span>
+      <span class="value">6</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- INTRO -->
+    <p class="intro">
+      Una lasagna de domingo, sin tomate, hecha en capas de bechamel y pesto casero. La faisselle mezclada con pesto le da una cremosidad fresca, y los hongos gigantes con el pollo salteado en ajo le dan cuerpo. La cúrcuma en la bechamel le saca un color cálido sin pasarse de sabor. Rinde para 6 porciones generosas.
+    </p>
+
+    <!-- INGREDIENTS -->
+    <div class="section-title">Ingredientes</div>
+
+    <div class="ingredients-section">
+      <div class="ingredients-subtitle">Base</div>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">9 hojas</span>
+          <span class="name">lasagna Barilla precocida</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">200g</span>
+          <span class="name">mozzarella maxi (Barilla)</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">3 pots</span>
+          <span class="name">faisselle (125g c/u)</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">300g</span>
+          <span class="name">pechuga de pollo</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">6 u</span>
+          <span class="name">champignons de Paris gigantes (~70g c/u)</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">2 dientes</span>
+          <span class="name">de ajo (para el pollo)</span>
+        </div>
+      </div>
+
+      <div class="ingredients-subtitle">Pesto casero (~120g)</div>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">10g</span>
+          <span class="name">albahaca fresca (mucha)</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">40g</span>
+          <span class="name">aceite de oliva</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">60g</span>
+          <span class="name">parmesano</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">4 u</span>
+          <span class="name">avellanas</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">1 diente</span>
+          <span class="name">ajo</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">c/n</span>
+          <span class="name">sal y pimienta</span>
+        </div>
+      </div>
+
+      <div class="ingredients-subtitle">Bechamel</div>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">1L</span>
+          <span class="name">leche demi-écrémée</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">20g</span>
+          <span class="name">harina de trigo</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">20g</span>
+          <span class="name">mantequilla salada</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">c/n</span>
+          <span class="name">cúrcuma + pimentón</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">1 diente</span>
+          <span class="name">ajo</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">c/n</span>
+          <span class="name">sal y pimienta</span>
+        </div>
+      </div>
+
+      <div class="ingredients-subtitle">Topping</div>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">20g</span>
+          <span class="name">parmesano rapé</span>
+        </div>
+        <div class="ingredient-item">
+          <span class="dot"></span>
+          <span class="qty">resto</span>
+          <span class="name">mozzarella restante</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="section-title">Preparacion</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-text">Hervi la pechuga de pollo. Una vez cocida, cortala en cubos chicos y salteala en una sartén con aceite y dos dientes de ajo picado, hasta que tome un poquito de color. Reserva.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-text">Pesto: en una procesadora poné la albahaca, el aceite de oliva, el parmesano, las avellanas, el ajo, sal y pimienta. Licuá hasta que quede una pasta verde brillante. Sale ~120g.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-text">Mezcla la faisselle (los 3 potes) con el pesto en un bowl. Te queda una crema verde con grumos, perfecta para las capas.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-text">Bechamel: derreti la mantequilla en una olla, añadi la harina y revolvé un minuto sobre fuego bajo. Agregá la leche demi-écrémée poco a poco mientras batís con varilla. Cuando rompa el hervor, añadi cúrcuma, pimentón, ajo machacado, sal y pimienta. Cocina hasta que espese (~5-7 min).</div>
+      </div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-text">Cortá los hongos en láminas. Cortá la mozzarella en rodajas (reservá un tercio para el topping).</div>
+      </div>
+      <div class="step">
+        <div class="step-number">6</div>
+        <div class="step-text">Armá las capas en una fuente para horno: empezá con bechamel en el fondo, después una capa de pasta (3 hojas), encima el pollo + hongos + mozzarella + cucharadas de la mezcla faisselle-pesto. Repetí 3 veces.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">7</div>
+        <div class="step-text">Topping: cubri con bechamel restante, distribui la mozzarella reservada y espolvorea los 20g de parmesano rapé.</div>
+      </div>
+      <div class="step">
+        <div class="step-number">8</div>
+        <div class="step-text">Horno 180°C por 30 min, hasta que la superficie esté bien dorada. Dejá reposar 10 min antes de cortar para que las capas asienten.</div>
+      </div>
+    </div>
+
+    <!-- TIPS -->
+    <div class="tips-box">
+      <div class="tips-title">Tips</div>
+      <ul>
+        <li>La pasta Barilla precocida no necesita hervirse antes — absorbe líquido de la bechamel mientras hornea. Por eso es importante que la bechamel quede fluida (no demasiado espesa).</li>
+        <li>La cúrcuma en la bechamel le da color dorado sin sabor invasivo. El pimentón realza el pollo.</li>
+        <li>Si querés bajar la grasa, podés usar mozzarella light y reducir el AOVE del pesto a 30g.</li>
+        <li>Reposar 10 min antes de cortar es la diferencia entre una porción que se mantiene en pie vs un charco delicioso.</li>
+        <li>Sobra muy bien al día siguiente, recalentado al horno con un chorrito de leche encima para que no se seque.</li>
+      </ul>
+    </div>
+
+    <!-- NUTRITION -->
+    <div class="section-title">Informacion Nutricional</div>
+    <table class="nutrition-table">
+      <thead>
+        <tr>
+          <th>Ingrediente</th>
+          <th>g</th>
+          <th>Kcal</th>
+          <th>Prot</th>
+          <th>Carb</th>
+          <th>Fat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Lasagna Barilla (9 hojas)</td><td>112.5</td><td>402</td><td>14.1</td><td>79.9</td><td>1.9</td></tr>
+        <tr><td>Mozzarella Maxi Barilla</td><td>200</td><td>484</td><td>34.2</td><td>3.6</td><td>38.0</td></tr>
+        <tr><td>Faisselle Rians 6% (3x125g)</td><td>375</td><td>319</td><td>28.1</td><td>13.1</td><td>18.8</td></tr>
+        <tr><td>Pesto - AOVE</td><td>40</td><td>354</td><td>0</td><td>0</td><td>40.0</td></tr>
+        <tr><td>Pesto - Parmesano</td><td>60</td><td>235</td><td>19.2</td><td>2.4</td><td>16.8</td></tr>
+        <tr><td>Pesto - Avellanas (4u)</td><td>7</td><td>44</td><td>1.0</td><td>1.2</td><td>4.3</td></tr>
+        <tr><td>Pesto - Albahaca + ajo</td><td>13</td><td>9</td><td>0.6</td><td>2.0</td><td>0.1</td></tr>
+        <tr><td>Champignons de Paris (6u)</td><td>420</td><td>92</td><td>13.0</td><td>13.9</td><td>1.3</td></tr>
+        <tr><td>Pechuga de pollo</td><td>300</td><td>495</td><td>93.0</td><td>0</td><td>10.8</td></tr>
+        <tr><td>Bechamel - Leche demi-écrémée</td><td>1000</td><td>470</td><td>32.0</td><td>48.0</td><td>16.0</td></tr>
+        <tr><td>Bechamel - Harina trigo</td><td>20</td><td>70</td><td>2.0</td><td>14.6</td><td>0.3</td></tr>
+        <tr><td>Bechamel - Mantequilla salada</td><td>20</td><td>143</td><td>0.2</td><td>0</td><td>16.2</td></tr>
+        <tr><td>Topping - Parmesano rapé</td><td>20</td><td>78</td><td>6.4</td><td>0.8</td><td>5.6</td></tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>TOTAL CRUDO</td>
+          <td>2587.5</td>
+          <td>3195</td>
+          <td>243.8</td>
+          <td>179.5</td>
+          <td>170.1</td>
+        </tr>
+        <tr>
+          <td>TOTAL COCIDO (~20% pérdida agua)</td>
+          <td>~2070</td>
+          <td>3195</td>
+          <td>243.8</td>
+          <td>179.5</td>
+          <td>170.1</td>
+        </tr>
+        <tr>
+          <td>POR PORCION (~345g cocido, 6 porciones)</td>
+          <td>345</td>
+          <td>533</td>
+          <td>40.6</td>
+          <td>29.9</td>
+          <td>28.4</td>
+        </tr>
+        <tr>
+          <td>POR 100g COCIDO</td>
+          <td>100</td>
+          <td>154</td>
+          <td>11.8</td>
+          <td>8.7</td>
+          <td>8.2</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="nutrition-note">Valores estimados. Cálculo basado en datos USDA y etiquetas comerciales.</div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    RECETARIO &middot; ERNESTO OTERO &middot; 2026
+  </div>
+
+</div>
+</body>
+</html>
