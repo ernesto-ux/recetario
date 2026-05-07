@@ -1,14 +1,20 @@
 # Changelog — Recetario Ernesto Otero
 
+## [1.6.2] — 7 mayo 2026
+### Corregido
+- **Lasagna de Pollo y Pesto** — corrección final del peso de la pasta
+  - Pasta: 8 hojas a 28g/u (224g) → **8 hojas crudas Barilla a 12.5g/u (100g)**
+  - -124g pasta, -443 kcal, -15.5g prot, -88g carbs
+  - Nuevos totales: **3102 kcal**, 235.4g prot, 163.3g carbs, 169.2g fat
+  - Cocido ~1884g, 6 porciones de ~314g
+  - **165 kcal/100g cocido** · 12.5g prot · 8.7g carbs · 9.0g fat
+  - Logs de cena 2026-05-06 (Ernesto 500g 824 kcal, Adriana 330g 544 kcal) recalculados
+
 ## [1.6.1] — 7 mayo 2026
 ### Corregido
-- **Lasagna de Pollo y Pesto** — corrección de cantidades reales
-  - Pasta: 9 hojas a 12.5g/u → 8 hojas Barilla all'uovo a 28g/u (+112g pasta, +400 kcal)
+- **Lasagna de Pollo y Pesto** — primera corrección de cantidades
+  - Pasta: 9 hojas a 12.5g/u → 8 hojas a 28g/u (luego corregido en 1.6.2)
   - Champignons: 6u × 70g (420g) → 200g reales (-220g, -48 kcal)
-  - Nuevos totales: 3550 kcal (+355), 251.1g prot (+7.3), 252.3g carbs (+72.8), 171.3g fat (+1.2)
-  - Cocido ~1990g (vs 2070), 6 porciones de ~332g
-  - 178 kcal/100g cocido · 12.6g prot · 12.7g carbs · 8.6g fat
-  - Logs de cena 2026-05-06 (Ernesto 500g, Adriana 330g) recalculados con nuevos macros
 
 ## [1.6.0] — 7 mayo 2026
 ### Agregado
