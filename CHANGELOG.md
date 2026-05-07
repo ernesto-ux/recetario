@@ -1,12 +1,22 @@
 # Changelog — Recetario Ernesto Otero
 
+## [1.6.1] — 7 mayo 2026
+### Corregido
+- **Lasagna de Pollo y Pesto** — corrección de cantidades reales
+  - Pasta: 9 hojas a 12.5g/u → 8 hojas Barilla all'uovo a 28g/u (+112g pasta, +400 kcal)
+  - Champignons: 6u × 70g (420g) → 200g reales (-220g, -48 kcal)
+  - Nuevos totales: 3550 kcal (+355), 251.1g prot (+7.3), 252.3g carbs (+72.8), 171.3g fat (+1.2)
+  - Cocido ~1990g (vs 2070), 6 porciones de ~332g
+  - 178 kcal/100g cocido · 12.6g prot · 12.7g carbs · 8.6g fat
+  - Logs de cena 2026-05-06 (Ernesto 500g, Adriana 330g) recalculados con nuevos macros
+
 ## [1.6.0] — 7 mayo 2026
 ### Agregado
 - **Lasagna de Pollo y Pesto** — receta de comfort food
   - Receta directa (sin audio/video), ingredientes dictados por Ernesto
-  - 9 hojas Barilla precocida + 200g mozzarella maxi + 3 faisselle 125g + pesto casero (40g AOVE, 60g parmesano, 4 avellanas, albahaca, ajo) + 420g champignons de Paris + 300g pollo + bechamel (1L leche demi-écrémée + cúrcuma + pimentón) + 20g parmesano rapé topping
-  - 3195 kcal totales, 243.8g proteína, ~2070g cocido (6 porciones de ~345g)
-  - 154 kcal/100g cocido · 11.8g prot · 8.7g carbs · 8.2g fat
+  - 8 hojas Barilla all'uovo (224g) + 200g mozzarella maxi + 3 faisselle 125g + pesto casero (40g AOVE, 60g parmesano, 4 avellanas, albahaca, ajo) + 200g champignons + 300g pollo + bechamel (1L leche demi-écrémée + cúrcuma + pimentón) + 20g parmesano rapé topping
+  - 3550 kcal totales, 251.1g proteína, ~1990g cocido (6 porciones de ~332g)
+  - 178 kcal/100g cocido · 12.6g prot · 12.7g carbs · 8.6g fat
   - HTML standalone, PDF, integrada en calculadora del recetario combinado
   - Agregada a FOOD_DATABASE de NutrIA y a local-prices.json (€1.40/100g)
 
